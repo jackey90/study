@@ -1,8 +1,20 @@
 package org.jackey.study.algorithm.chapter.two;
 
-import org.jackey.study.algorithm.chapter.common.PublicData;
+import org.jackey.kingbox.jtool.inAndOut.JOutPrint;
+import org.jackey.study.common.BaseArrayClass;
+import org.jackey.study.common.PublicData;
 
-public class InsertionSort {
+/**
+ * @author jackey90.hj@gmail.com
+ * @date Dec 9, 2014
+ *
+ *       Observe that the while loop of lines 5–7 of the INSERTION-SORT
+ *       procedure in Section 2.1 uses a linear search to scan (backward)
+ *       through the sorted subarray AOE1 : : j  1. Can we use a binary search
+ *       (see Exercise 2.3-5) instead to improve the overall worst-case running
+ *       time of insertion sort to ‚O(nlgn)
+ */
+public class InsertionSort extends BaseArrayClass {
 
 	public static void improvedInsertSort(int[] array) {
 		if (array == null) {
@@ -23,10 +35,8 @@ public class InsertionSort {
 	}
 
 	public static void main(String[] args) {
-		int[] array = PublicData.randomArray();
-		improvedInsertSort(array);
-		for (int i = 0; i < array.length; i++) {
-			System.out.println(array[i]);
-		}
+		JOutPrint.JPrint(randomArray);
+		improvedInsertSort(randomArray);
+		JOutPrint.JPrint(randomArray);
 	}
 }

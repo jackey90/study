@@ -1,8 +1,21 @@
 package org.jackey.study.algorithm.chapter.two;
 
-import org.jackey.study.algorithm.chapter.common.PublicData;
+import org.jackey.kingbox.jtool.inAndOut.JOutPrint;
+import org.jackey.study.common.BaseArrayClass;
+import org.jackey.study.common.PublicData;
 
-public class BinarySearch {
+/**
+ * @author jackey90.hj@gmail.com
+ *
+ *         Referring back to the searching problem (see Exercise 2.1-3), observe
+ *         that if the sequence A is sorted, we can check the midpoint of the
+ *         sequence against  and eliminate half of the sequence from further
+ *         consideration. The binary search algorithm repeats this procedure,
+ *         halving the size of the remaining portion of the sequence each time.
+ *         Write pseudocode, either iterative or recursive, for binary search.
+ *         Argue that the worst-case running time of binary search is ‚.lg n/.
+ */
+public class BinarySearch extends BaseArrayClass{
 
 	/**
 	 * @param array
@@ -63,10 +76,10 @@ public class BinarySearch {
 	}
 
 	public static void main(String[] args) {
-		int[] array = PublicData.sortedArray();
 		int goal = 50;
-		System.out.println(binarySearch(array, goal, 0, array.length - 1));
-		System.out.println(binarySearchIndex(array, goal, 0, array.length - 1));
+		JOutPrint.JPrint(sortedArray);
+		JOutPrint.JPrint(binarySearch(sortedArray, goal, 0, sortedArray.length - 1));
+		JOutPrint.JPrint(binarySearchIndex(sortedArray, goal, 0, sortedArray.length - 1));
 	}
 
 }

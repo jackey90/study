@@ -1,6 +1,8 @@
-package org.jackey.study.algorithm.chapter.common;
+package org.jackey.study.common;
 
 import java.util.Random;
+
+import org.jackey.kingbox.jtool.inAndOut.JOutPrint;
 
 public class PublicData {
 	private static int BEGIN = 1;
@@ -25,24 +27,15 @@ public class PublicData {
 			}
 
 			if (!sorted) {
+				//JOutPrint.JPrint(result);
 				
-				for (int i = 0; i < length; i++) {
-					// System.out.print("[" + i + " : " + result[i] + "]");
-					System.out.print(result[i] + "    ");
-				}
-				System.out.println();
-
 				for (int i = 0; i < length; i++) {
 					swap(result, i, r.nextInt(length));
 				}
 			}
 
 		}
-		for (int i = 0; i < length; i++) {
-			// System.out.print("[" + i + " : " + result[i] + "]");
-			System.out.print(result[i] + "    ");
-		}
-		System.out.println();
+		//JOutPrint.JPrint(result);
 		return result;
 	}
 
