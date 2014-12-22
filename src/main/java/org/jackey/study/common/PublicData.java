@@ -60,4 +60,8 @@ public class PublicData {
 	public static int[] randomArray() {
 		return randomGenerator(BEGIN, LENGTH);
 	}
+	
+	public static int[] contiArray(){
+		return generator(BEGIN, LENGTH, true, true);
+	}
 }
