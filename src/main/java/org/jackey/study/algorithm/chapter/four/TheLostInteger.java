@@ -44,27 +44,60 @@ public class TheLostInteger {
 
 	public static int binaryFind() {
 		int result = -1;
+		int length = arrayFull.length;
+		int maxPos = Integer.bitCount(arrayFull[length - 1]);
+		int[] ones = new int[length];
+		int[] zeros = new int[length];
+		int[] indexs = new int[length];
+		for (int i = 0; i < length; i++) {
+			indexs[i] = i;
+		}
+		int count = length;
+		for (int i = maxPos; i >= 0; i--) {
+			count = countOneAndZero(indexs, ones, zeros, i, count);
+			if (count == 0) {
+				result = arrayFull[indexs[0]];
+			}
+		}
 
 		return result;
 	}
-	
-	public static int count
 
-	public static int countOneOrZero(int[] array, int[] oneArray, int[] zeroArray, int pos,
-			int oneOrZero) {
-		int count = 0;
-		if (array != null && array.length > 0 && indexs != null
-				&& indexs.length > 0) {
+	public static int countOneAndZero(int[] indexs, int[] ones, int[] zeros,
+			int pos, int count) {
 
-			for (int i = 0; i < indexs.length; i++) {
-				if (getTheBitOf(array[indexs[i]], pos) == oneOrZero) {
-					count++;
-					indexs[count - 1] = i;
+		int one = 0;
+		int zero = 0;
+		int lostZero = 0;
+		int num1;
+		int num2;
+		for (int i = count - 1; i >= 0; i--) {
+			num1 = arrayFull[indexs[i]];
+			JOutPrint.JPrint(Integer.toBinaryString(num1));
+			if (getTheBitOf(num1, pos) == 0) {
+				zero++;
+				zeros[zero - 1] = i;
+			} else {
+				ones[one++] = i;
+			}
+
+			if (i < count - 1) {
+				num2 = arrayLost[indexs[i]];
+				JOutPrint.JPrint(Integer.toBinaryString(num2));
+				if (getTheBitOf(num2, pos) == 0) {
+					lostZero++;
 				}
 			}
 		}
 
-		return count;
+		if (zero == lostZero) {
+			indexs = ones;
+			return one - 1;
+		} else {
+			indexs = zeros;
+			return zero - 1;
+		}
+
 	}
 
 	public static int getTheBitOf(int num, int pos) {
@@ -72,9 +105,7 @@ public class TheLostInteger {
 	}
 
 	public static void main(String[] args) {
-		JOutPrint.JPrint(foolFind());
-		JOutPrint.JPrint(Integer.toBinaryString(123));
-		JOutPrint.JPrint(Integer.bitCount(123));
-		JOutPrint.JPrint(getTheBitOf(123, 2));
+		// JOutPrint.JPrint(foolFind());
+		JOutPrint.JPrint(binaryFind());
 	}
 }
